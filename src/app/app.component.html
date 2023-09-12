@@ -1,47 +1,120 @@
 <div class="main-container">
+  <div *ngIf="form1; else form2">
+    
+    <form [formGroup]="dateSelectorForm" (ngSubmit)="onSumbit()" class="form-1">
+      <div>
+        <h2>Select a time to start trip</h2>
+        <input type="time" class="form-control" formControlName="timeSelected">
 
-  <div
-  *ngIf="currentForm==='form1'"
-  >
+      </div>
+    
+    <div>
+    <div class="repeat-on">
+      <label>Repeat On*</label>
+      <div class="weeks-flex">
+        <div class="weeks"  *ngFor="let week of weeks; let i=index" 
+        [ngStyle]="{'background-color': week.selected? 'blue': 'white'}" (click)="weekClicked(i)">
+          <h3>{{week.data}}</h3>
+         </div>
+      </div>
+    </div>  
+    <div class="date-selector">
+      <div>
+        <h3>Start Date</h3>
+        <input type="date" class="form-control" formControlName="startDate" [(ngModel)]="startDate">
+      </div>
+      <div>
+        <h3>End Date</h3>
+        <input type="date" class="form-control" formControlName="endDate" [min]="startDate">
+      </div>
+      <div>
+        <input type="checkbox" id="none-date" name="noDate" value=true formControlName="endDateAuto">
+        <label for="noDate">No End Date</label>
+  
+      </div>
+    </div>
+    </div>
+    <div>
+      <input type="submit">
+    </div>
+    </form>  
 
-  <form [formGroup]="dateSelectorForm" (ngSubmit)="onSumbit()" >
-    <div
-  class="auto-fill-animation"
-  >
-  </div>
-    <h2>Select a time to start trip</h2>
-    <input type="time" class="form-control" formControlName="timeSelected">
-  <div>
-  <div class="repeat-on">
-    <label>Repeat On*</label>
-    <div class="weeks-flex">
-      <div class="weeks"  *ngFor="let week of weeks; let i=index" 
-      [ngStyle]="{'background-color': week.selected? 'blue': 'white'}" (click)="weekClicked(i)">
-        <h3>{{week.data}}</h3>
-       </div>
-    </div>
-  </div>  
-  <div class="date-selector">
-    <div>
-      <h3>Start Date</h3>
-      <input type="date" class="form-control" formControlName="startDate" [(ngModel)]="startDate">
-    </div>
-    <div>
-      <h3>End Date</h3>
-      <input type="date" class="form-control" formControlName="endDate" [min]="startDate">
-    </div>
-    <div>
-      <input type="checkbox" id="none-date" name="noDate" value=true formControlName="endDateAuto">
-      <label for="noDate">No End Date</label>
-
-    </div>
-  </div>
-  </div>
-  <div>
-    <input type="submit">
-  </div>
-  </form>
 
   </div>
 
 </div>
+
+
+
+<ng-template #form2>
+  <div class="form-2">
+    <div *ngFor="let date of dateArray1; let i=index" >
+      <button class="accordion" (click)="selectedRow(i)">{{date.date}} {{date.day}}</button>
+      <div class="panel-main" *ngIf="date.selected">
+        <form class="form-dropdown" [formGroup]="dropDownForm" (ngSubmit)="onSubmit()">
+          <div class="panel" >
+          
+            <label>Bus Class*</label>
+            <div class="select-editable">
+              <select onchange="this.nextElementSibling.value=this.value" formControlName="busClass">
+                <option value=""></option>
+                <option value="bus class 1">bus class 1</option>
+                <option value="bus class 2">bus class 2</option>
+                <option value="bus class 3">bus class 3</option>
+              </select>
+              <input type="text" name="format" value=""/>
+            </div>
+          </div>
+          <div class="panel">
+            <label>Bus*</label>
+            <div class="select-editable">
+              <select onchange="this.nextElementSibling.value=this.value" formControlName="bus">
+                <option value=""></option>
+                <option value="bus 1">bus 1</option>
+                <option value="bus 2">bus 2</option>
+                <option value="bus 3">bus 3</option>
+              </select>
+              <input type="text" name="format" value=""/>
+            </div>
+          </div>
+        
+         
+          <div class="panel">
+            <label>Driver*</label>
+            <div class="select-editable">
+              <select onchange="this.nextElementSibling.value=this.value" formControlName="driver">
+                <option value=""></option>
+                <option value="driver 1">driver 1</option>
+                <option value="driver 2">driver 2</option>
+                <option value="driver 3">driver 3</option>
+          
+              </select>
+              <input type="text" name="format" value=""/>
+            </div>
+            <div *ngIf="i===0">
+              <input type="checkbox" id="auto-fill-values" name="all-values" value=true>
+              <label for="all-values">Keep Same for all the dates</label>
+              <input type="submit">
+  
+            </div>
+         
+          </div>
+
+
+            
+        </form>
+   
+
+      </div>
+      
+    
+      </div>
+
+
+      <button>Continue</button>
+      
+  
+    </div>
+
+
+</ng-template>
