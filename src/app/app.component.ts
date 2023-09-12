@@ -58,6 +58,8 @@ export class AppComponent implements OnInit {
   ]
   startDate: any;
   ngOnInit(): void {
+    this.dropDownForm.valueChanges.subscribe((item) => console.log('1111111111111111111',item));
+
     this.form1 = false;
 
 
@@ -183,8 +185,8 @@ export class AppComponent implements OnInit {
 
     })
 
-    console.log(this.dropDownForm.get('busClass')?.value)
-    this.dropDownForm.setValue({ busClass: 'abc', bus: '' , driver: ''})
+    console.log(this.dropDownForm.get('bus'))
+    // this.dropDownForm.setValue({ busClass: 'abc', bus: '' , driver: ''})
 
 }
 
