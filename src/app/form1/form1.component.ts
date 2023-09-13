@@ -19,12 +19,12 @@ export class Form1Component {
 
   dateSelectorForm = new FormGroup({
     timeSelected: new FormControl(null, [Validators.required]),
-    weekDaySelected: new FormArray([]),
-    startDate: new FormControl(null, [Validators.required]),
-    endDate: new FormControl(null, [Validators.required]),
+    weekDaySelected: new FormArray([], [Validators.required]),
+    startDate: new FormControl('', [Validators.required]),
+    endDate: new FormControl(''),
     endDateAuto: new FormControl(false),
   });
-
+  currentDate = new Date().toLocaleDateString();
   form1: boolean = true;
   datesSelected: Array<number> = [];
   dateArray: dataSelected[] = [];
@@ -88,35 +88,35 @@ export class Form1Component {
 
     console.log(this.datesSelected);
 
-    // if ((this.dateSelectorForm.get('endDateAuto')?.value) === true) {
-    //   let dt = new Date();
-      
-    //   let endDateFunc = this.dateSelectorForm.get('startDate')?.value;
+    const startDate = this.dateSelectorForm.get('startDate')?.value;
+    const isEndDateAuto = this.dateSelectorForm.get('endDateAuto')?.value;
 
-    //   console.log('entereddd', 94);
+if (isEndDateAuto === true) {
+  const endDateFunc = new Date(startDate as string) ;
+  endDateFunc.setDate(endDateFunc.getDate() + 90);
 
-      
-    //   this.getWeekendDates(
-    //     this.dateSelectorForm.get('startDate')?.value,
-    //     dt.setDate((endDateFunc! as any).getDate() + 90),
-    //     this.datesSelected
-    //   );
+  this.getWeekendDates(startDate, endDateFunc, this.datesSelected);
 
-    //   console.log('left', 94);
+  console.log('left', 94);
+} else {
+  const endDate = this.dateSelectorForm.get('endDate')?.value;
+  this.getWeekendDates(startDate, endDate, this.datesSelected);
+}
 
-    // } else {
-      this.getWeekendDates(
-        this.dateSelectorForm.get('startDate')?.value,
-        this.dateSelectorForm.get('endDate')?.value,
-        this.datesSelected
-      );
 
-    // }
+
 
 
     this.service.updateData(this.dateArray);
 
-    this.route.navigate(['/form-2'])
+    if (this.dateSelectorForm.valid === true) {
+      this.route.navigate(['/form-2'])
+
+    } else {
+      alert('Select all the values');
+    }
+
+    
 
     
   }

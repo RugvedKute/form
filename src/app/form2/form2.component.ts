@@ -20,32 +20,110 @@ interface dataSelected {
 export class Form2Component implements OnInit {
   constructor(private route: ActivatedRoute, private service: ManageService) {}
 
-  dateArray: dataSelected[] = []
-  // dateArray: dataSelected[] = [
-  //   {
-  //     date: '17/03/2023',
-  //     day: 'Monday',
-  //     busClass: '',
-  //     bus: '',
-  //     driver: '',
-  //     selected: false,
-  //   },
-  //   {
-  //     date: '19/03/2023',
-  //     day: 'Tuesday',
-  //     busClass: '',
-  //     bus: '',
-  //     driver: '',
-  //     selected: false,
-  //   },
-  // ];
+  // dateArray: dataSelected[] = []
+  dateArray: dataSelected[] = [
+    {
+      date: '17/03/2023',
+      day: 'Monday',
+      busClass: '',
+      bus: '',
+      driver: '',
+      selected: false,
+    },
+    {
+      date: '19/03/2023',
+      day: 'Tuesday',
+      busClass: '',
+      bus: '',
+      driver: '',
+      selected: false,
+    },
+
+    {
+      date: '17/03/2023',
+      day: 'Monday',
+      busClass: '',
+      bus: '',
+      driver: '',
+      selected: false,
+    },
+    {
+      date: '17/03/2023',
+      day: 'Monday',
+      busClass: '',
+      bus: '',
+      driver: '',
+      selected: false,
+    },
+    {
+      date: '17/03/2023',
+      day: 'Monday',
+      busClass: '',
+      bus: '',
+      driver: '',
+      selected: false,
+    },
+    {
+      date: '17/03/2023',
+      day: 'Monday',
+      busClass: '',
+      bus: '',
+      driver: '',
+      selected: false,
+    },
+    {
+      date: '17/03/2023',
+      day: 'Monday',
+      busClass: '',
+      bus: '',
+      driver: '',
+      selected: false,
+    },   {
+      date: '17/03/2023',
+      day: 'Monday',
+      busClass: '',
+      bus: '',
+      driver: '',
+      selected: false,
+    },   {
+      date: '17/03/2023',
+      day: 'Monday',
+      busClass: '',
+      bus: '',
+      driver: '',
+      selected: false,
+    },   {
+      date: '17/03/2023',
+      day: 'Monday',
+      busClass: '',
+      bus: '',
+      driver: '',
+      selected: false,
+    },
+    {
+      date: '17/03/2023',
+      day: 'Monday',
+      busClass: '',
+      bus: '',
+      driver: '',
+      selected: false,
+    },
+    {
+      date: '17/03/2023',
+      day: 'Monday',
+      busClass: '',
+      bus: '',
+      driver: '',
+      selected: false,
+    },
+  ];
 
   dropDownForm: any;
   allValuesChecked: boolean = false;
 
   // activatedRoute: any;
   ngOnInit(): void {
-    this.dateArray = this.service.getData();
+    // this.dateArray = this.service.getData();
 
 
     this.dropDownForm = new FormArray(

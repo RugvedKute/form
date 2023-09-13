@@ -1,40 +1,55 @@
 <div class="main-container">
+  <div class="main-inner">
     <form [formGroup]="dateSelectorForm" (ngSubmit)="onSumbit()" class="form-1">
-        <div>
-          <h2>Select a time to start trip</h2>
-          <input type="time" class="form-control" formControlName="timeSelected" />
-        </div>
-    
-        <div>
-          <div class="repeat-on">
-            <label>Repeat On*</label>
-            <div class="weeks-flex">
-              <div class="weeks" *ngFor="let week of weeks; let i = index" [ngStyle]="{
-                  'background-color': week.selected ? 'blue' : 'white'
-                }" (click)="weekClicked(i)">
-                <h3>{{ week.data }}</h3>
-              </div>
-            </div>
-          </div>
-          <div class="date-selector">
-            <div>
-              <h3>Start Date</h3>
-              <input type="date" class="form-control" formControlName="startDate" [(ngModel)]="startDate" />
-            </div>
-            <div>
-              <h3>End Date</h3>
-              <input type="date" class="form-control" formControlName="endDate" [min]="startDate" />
-            </div>
-            <div>
-              <input type="checkbox" id="none-date" name="noDate" value="true" formControlName="endDateAuto" />
-              <label for="noDate">No End Date</label>
+      <div class="filler">
+        <div class="circle"></div>
+        <div class="rectangle"></div>
+        <div class="circle" id="circle2"></div>
+      </div>
+      <div class="text">
+        <p>Select Route</p>
+        <p>Time</p>
+      </div>
+      <div class="start-trip">
+        <h2>Select time to start trip</h2>
+        <input type="time" class="form-control" formControlName="timeSelected" />
+      </div>
+  
+      <div>
+        <div class="repeat-on">
+          <p>Repeat On*</p>
+          <div class="weeks-flex">
+            <div class="weeks" *ngFor="let week of weeks; let i = index" [ngStyle]="{
+                'background-color': week.selected ? 'blue' : '#f4f0f0',
+                'color': week.selected ? 'white' : '#555',
+              }" (click)="weekClicked(i)">
+              <h3>{{ week.data }}</h3>
             </div>
           </div>
         </div>
-        <div>
-          <input type="submit" />
+        <div class="date-selector">
+          <div class="start-date">
+            <h3>Start Date*</h3>
+            <input type="date" class="form-control" formControlName="startDate" [(ngModel)]="startDate"/>
+          </div>
+          <div class="end-date">
+            <h3>End Date*</h3>
+            <input type="date" class="form-control" formControlName="endDate" [min]="startDate" />
+          </div>
+          <div class="no-end-date">
+            <input type="checkbox" id="none-date" name="noDate" value="true" formControlName="endDateAuto" />
+            <label for="noDate">No End Date</label>
+          </div>
         </div>
-      </form>
+      </div>
+      <div class="submit-btn">
+        <input type="submit" />
+      </div>
+    </form>
+
+  </div>
+
+   
  
 </div>
 
