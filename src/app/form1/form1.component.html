@@ -1,0 +1,40 @@
+<div class="main-container">
+    <form [formGroup]="dateSelectorForm" (ngSubmit)="onSumbit()" class="form-1">
+        <div>
+          <h2>Select a time to start trip</h2>
+          <input type="time" class="form-control" formControlName="timeSelected" />
+        </div>
+    
+        <div>
+          <div class="repeat-on">
+            <label>Repeat On*</label>
+            <div class="weeks-flex">
+              <div class="weeks" *ngFor="let week of weeks; let i = index" [ngStyle]="{
+                  'background-color': week.selected ? 'blue' : 'white'
+                }" (click)="weekClicked(i)">
+                <h3>{{ week.data }}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="date-selector">
+            <div>
+              <h3>Start Date</h3>
+              <input type="date" class="form-control" formControlName="startDate" [(ngModel)]="startDate" />
+            </div>
+            <div>
+              <h3>End Date</h3>
+              <input type="date" class="form-control" formControlName="endDate" [min]="startDate" />
+            </div>
+            <div>
+              <input type="checkbox" id="none-date" name="noDate" value="true" formControlName="endDateAuto" />
+              <label for="noDate">No End Date</label>
+            </div>
+          </div>
+        </div>
+        <div>
+          <input type="submit" />
+        </div>
+      </form>
+ 
+</div>
+

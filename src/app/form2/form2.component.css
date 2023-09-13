@@ -1,0 +1,106 @@
+.main-container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-1 {
+    border: 1px solid;
+    padding: 20px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.weeks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+
+.weeks-flex {
+    display: flex;
+    gap: 10px
+}
+.weekSelected {
+    background-color: aqua;
+}
+.date-selector {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+}
+
+
+.form-2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.accordion {
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+  }
+
+
+  .panel {
+    background-color: #ffc8dd;
+  }
+
+  .panel-container select {
+    width: 300px;
+    height: 50px;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-radius: 10px;
+  }
+  .select-editable {position:relative; background-color:white; border:solid grey 1px;  width:120px; height:18px;}
+  .select-editable select {position:absolute; top:0px; left:0px; font-size:14px; border:none; width:120px; margin:0;}
+  .select-editable input {position:absolute; top:0px; left:0px; width:100px; padding:1px; font-size:12px; border:none;}
+  .select-editable select:focus, .select-editable input:focus {outline:none;}
+
+.form-dropdown {
+    display: inline-block !important ;
+}
+
+.hidden {
+    display: none;
+}
+
+.label-button {
+    width: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid;
+    transition: 0.3s;
+    background-color: #ffc8dd;
+}
+
+
+.label-button {
+    width: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #ff6b98;
+    background-color: #ffc8dd;
+    padding: 10px; 
+    text-align: center; 
+    font-weight: bold; 
+    color: #ff6b98; 
+    transition: background-color 0.3s, color 0.3s; 
+  }
+
+  .label-button:hover {
+    background-color: #ff6b98;
+    color: #ffc8dd;
+  }
+  

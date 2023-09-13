@@ -1,0 +1,40 @@
+.main-container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-1 {
+    border: 1px solid;
+    padding: 20px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.weeks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+
+.weeks-flex {
+    display: flex;
+    gap: 10px
+}
+.weekSelected {
+    background-color: aqua;
+}
+.date-selector {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+}
+
+app-form2 {
+    display: none;
+}
