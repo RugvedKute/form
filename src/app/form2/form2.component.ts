@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+
 import { ManageService } from '../manage.service';
 import { dataSelected } from '../models/data.model';
 
@@ -123,7 +124,6 @@ export class Form2Component implements OnInit {
 
     this.dropDownForm = new FormArray(
       this.dateArray.map((x: any) => {
-        console.log(x);
         return this.createGroup({
           date: x.date,
           day: x.day,
@@ -147,8 +147,8 @@ export class Form2Component implements OnInit {
           ) as HTMLInputElement;
 
           if (this.allValuesChecked === true) {
-            checkbox.checked = false;
-            this.allValuesChecked = false;
+            // checkbox.checked = false;
+            // this.allValuesChecked = false;
           }
 
        
@@ -161,10 +161,10 @@ export class Form2Component implements OnInit {
           ) as HTMLInputElement;
 
           if (this.allValuesChecked === true) {
-            checkbox.checked = false;
-            this.allValuesChecked = false;
+            // checkbox.checked = false;
+            // this.allValuesChecked = false;
           }
-          // this.allValuesChecked = false;
+         
         })
     
         control.get('driver')?.valueChanges.subscribe(value => {
@@ -173,11 +173,12 @@ export class Form2Component implements OnInit {
           ) as HTMLInputElement;
 
           if (this.allValuesChecked === true ) {
-            checkbox.checked = false;
-            this.allValuesChecked = false;
+            // console.log(checkbox)
+            // checkbox.checked = false;
+            // this.allValuesChecked = false;
           }
-          // this.allValuesChecked = false;
-          console.log("this.allValuesChecked",this.allValuesChecked);
+       
+      
           
         })
       })
@@ -219,28 +220,36 @@ export class Form2Component implements OnInit {
 
       if (control.status === 'INVALID') {
         isFormValid = false
-        throw alert('All values are not selcted!')
+        throw alert('All values are not selected!')
         
 
       } 
     })
    
     if (isFormValid === true) {
-      console.log()
-      throw alert('The form has been sucessfully submittted')
+      console.log(this.dropDownForm.controls)
+      alert('The form has been sucessfully submittted')
     }
 
 
   }
 
   checkboxChanged(event: Event) {
-    const checkbox = event.target as HTMLInputElement;
+    
+
+    if (event.target instanceof HTMLSelectElement ||  (event.target instanceof HTMLInputElement && event.target.type === 'text')) {
+      this.allValuesChecked = false;
+    } else {
+      const checkbox = event.target as HTMLInputElement;
+
     this.allValuesChecked = checkbox.checked;
-    console.log(this.allValuesChecked, '---234---')
+
+
+   
     if (this.allValuesChecked) {
       this.dropDownForm.controls.forEach(
         (control: FormGroup, index: number) => {
-          console.log(index);
+       
           if (index > 0) {
             control.patchValue({
               busClass: this.dropDownForm.controls[0].get('busClass').value,
@@ -268,6 +277,9 @@ export class Form2Component implements OnInit {
        
       }
     }
+      
+    }
+    
 
     navigateToRoute() {
       this.routeNav.navigate([''])

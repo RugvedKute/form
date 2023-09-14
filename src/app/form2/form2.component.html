@@ -20,13 +20,13 @@
              <div class="panel">
                <label>Bus Class*</label>
                <div class="select-editable">
-                 <select onchange="this.nextElementSibling.value=this.value" formControlName="busClass">
+                 <select onchange="this.nextElementSibling.value=this.value" formControlName="busClass" (change)="checkboxChanged($event)">
                    <option value=""></option>
                    <option value="bus class 1">bus class 1</option>
                    <option value="bus class 2">bus class 2</option>
                    <option value="bus class 3">bus class 3</option>
                  </select>
-                 <input type="text" name="format" formControlName="busClass">
+                 <input type="text" name="format" formControlName="busClass" (change)="checkboxChanged($event)">
                </div>
              </div>
              <div class="panel">
@@ -38,7 +38,7 @@
                    <option value="bus 2">bus 2</option>
                    <option value="bus 3">bus 3</option>
                  </select>
-                 <input type="text" name="format" formControlName="bus" />
+                 <input type="text" name="format" formControlName="bus" (change)="checkboxChanged($event)" />
                </div>
              </div> 
    
@@ -51,11 +51,11 @@
                    <option value="driver 2">driver 2</option>
                    <option value="driver 3">driver 3</option>
                  </select>
-                 <input type="text" name="format" formControlName="driver" />
+                 <input type="text" name="format" formControlName="driver" (change)="checkboxChanged($event)"/>
                </div>
                <div *ngIf="i === 0">
                  <input type="checkbox" id="auto-fill-values" name="all-values" [checked]="allValuesChecked"
-                   (change)="checkboxChanged($event)" />
+                  (change)="checkboxChanged($event)" />
                  <label for="all-values">Keep Same for all the dates</label>
                  <!-- <input type="submit" id="submit-form" class="hidden" /> -->
                </div>
