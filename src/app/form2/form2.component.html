@@ -3,17 +3,17 @@
     <div class="form-2">
       <form  [formGroup]="dropDownForm" (ngSubmit)="onSubmit()">
         <div class="filler">
-          <div class="circle"></div>
+          <div class="circle" id="circle1" (click)="navigateToRoute()"></div>
           <div class="rectangle"></div>
-          <div class="circle" id="circle2"></div>
+          <div class="circle"></div>
         </div>
         <div class="text">
           <p>Select Route</p>
           <p>Time</p>
         </div>
         <div class="single-forms">
-          <div *ngFor="let date of this.dropDownForm.controls; let i = index" [formGroup]="date">
-            <button class="accordion" (click)="selectedRow(i)">
+          <div class="single-forms-below" *ngFor="let date of this.dropDownForm.controls; let i = index" [formGroup]="date">
+            <button type="button" class="accordion" (click)="selectedRow(i)">
              {{ date.value.date }} {{ date.value.day }}
            </button>
            <div class="panel-main" *ngIf="date.value.selected">
@@ -57,7 +57,7 @@
                  <input type="checkbox" id="auto-fill-values" name="all-values" [checked]="allValuesChecked"
                    (change)="checkboxChanged($event)" />
                  <label for="all-values">Keep Same for all the dates</label>
-                 <input type="submit" id="submit-form" class="hidden" />
+                 <!-- <input type="submit" id="submit-form" class="hidden" /> -->
                </div>
              </div>
            </div>
@@ -65,7 +65,7 @@
 
         </div>
         <div (click)="onSubmit()" class="label-button">
-          <label for="submit-form" tabindex="0">Submit</label>
+          <p for="submit-form" tabindex="0">Submit</p>
         </div>
       
       </form>

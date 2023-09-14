@@ -1,16 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ManageService } from '../manage.service';
+import { dataSelected } from '../models/data.model';
 
-interface dataSelected {
-  date: any;
-  day: string;
-  busClass: string;
-  bus: string;
-  driver: string;
-  selected: boolean;
-}
+
 
 @Component({
   selector: 'app-form2',
@@ -18,10 +12,10 @@ interface dataSelected {
   styleUrls: ['./form2.component.css'],
 })
 export class Form2Component implements OnInit {
-  constructor(private route: ActivatedRoute, private service: ManageService) {}
+  constructor(private route: ActivatedRoute, private service: ManageService,private routeNav: Router) {}
 
-  // dateArray: dataSelected[] = []
-  dateArray: dataSelected[] = [
+  // dateArray: dataSelected[] = [];
+    dateArray: dataSelected[] = [
     {
       date: '17/03/2023',
       day: 'Monday',
@@ -118,6 +112,7 @@ export class Form2Component implements OnInit {
     },
   ];
 
+
   dropDownForm: any;
   allValuesChecked: boolean = false;
 
@@ -147,14 +142,16 @@ export class Form2Component implements OnInit {
       this.dropDownForm.controls.forEach((control: FormGroup) => {
     
         control.get('busClass')?.valueChanges.subscribe(() => {
-          // this.allValuesChecked = false;
           const checkbox = document.getElementById(
             'auto-fill-values',
           ) as HTMLInputElement;
 
           if (this.allValuesChecked === true) {
             checkbox.checked = false;
+            this.allValuesChecked = false;
           }
+
+       
     
         })
 
@@ -165,6 +162,7 @@ export class Form2Component implements OnInit {
 
           if (this.allValuesChecked === true) {
             checkbox.checked = false;
+            this.allValuesChecked = false;
           }
           // this.allValuesChecked = false;
         })
@@ -176,8 +174,11 @@ export class Form2Component implements OnInit {
 
           if (this.allValuesChecked === true ) {
             checkbox.checked = false;
+            this.allValuesChecked = false;
           }
           // this.allValuesChecked = false;
+          console.log("this.allValuesChecked",this.allValuesChecked);
+          
         })
       })
 
@@ -195,9 +196,9 @@ export class Form2Component implements OnInit {
     return new FormGroup({
       date: new FormControl(data.date),
       day: new FormControl(data.day),
-      busClass: new FormControl(data.busClass),
-      bus: new FormControl(data.bus),
-      driver: new FormControl(data.driver),
+      busClass: new FormControl(data.busClass, [Validators.required]),
+      bus: new FormControl(data.bus, [Validators.required]),
+      driver: new FormControl(data.driver, [Validators.required]),
       selected: new FormControl(false),
     });
   }
@@ -211,19 +212,31 @@ export class Form2Component implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.dropDownForm.get('1.busClass'));
-    this.dateArray.forEach((item: any) => {
-      item.busClass = this.dropDownForm.get('busClass.first')?.value!;
-      item.bus = this.dropDownForm.get('bus.first')?.value!;
-      item.driver = this.dropDownForm.get('driver.first')?.value!;
-    });
 
-    console.log(this.dateArray);
+    let isFormValid = true;
+
+    this.dropDownForm.controls.forEach((control: FormGroup, index: number) => {
+
+      if (control.status === 'INVALID') {
+        isFormValid = false
+        throw alert('All values are not selcted!')
+        
+
+      } 
+    })
+   
+    if (isFormValid === true) {
+      console.log()
+      throw alert('The form has been sucessfully submittted')
+    }
+
+
   }
 
   checkboxChanged(event: Event) {
     const checkbox = event.target as HTMLInputElement;
     this.allValuesChecked = checkbox.checked;
+    console.log(this.allValuesChecked, '---234---')
     if (this.allValuesChecked) {
       this.dropDownForm.controls.forEach(
         (control: FormGroup, index: number) => {
@@ -237,11 +250,29 @@ export class Form2Component implements OnInit {
           }
         }
       );
+      checkbox.checked = false;
+    } else {
+        this.dropDownForm.controls.forEach((control: FormGroup, index: number) => {
+
+          if(index > 0) {
+            control.patchValue({
+              busClass: '',
+              bus: '',
+              driver: '',
+            });
+
+          }
+
+        })
+
+       
+      }
     }
 
-    // } else {
-    //   this.allValuesChecked = false;
+    navigateToRoute() {
+      this.routeNav.navigate([''])
+  
+    }
 
-    // }
   }
-}
+

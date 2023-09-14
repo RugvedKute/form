@@ -4,7 +4,7 @@
       <div class="filler">
         <div class="circle"></div>
         <div class="rectangle"></div>
-        <div class="circle" id="circle2"></div>
+        <div class="circle" id="circle2" (click)="naviagteToTime()"></div>
       </div>
       <div class="text">
         <p>Select Route</p>
@@ -20,8 +20,8 @@
           <p>Repeat On*</p>
           <div class="weeks-flex">
             <div class="weeks" *ngFor="let week of weeks; let i = index" [ngStyle]="{
-                'background-color': week.selected ? 'blue' : '#f4f0f0',
-                'color': week.selected ? 'white' : '#555',
+                'background-color': week.selected ? '#0080ff' : '#f4f0f0',
+                'color': week.selected ? 'white' : 'black',
               }" (click)="weekClicked(i)">
               <h3>{{ week.data }}</h3>
             </div>

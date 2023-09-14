@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 
 
 .main-container {
@@ -7,26 +9,24 @@
     justify-content: center;
 }
 
-.main-inner {
-    height: 600px;
-    width: 500px;
-    
-   
+
+
+.weeks h3 {
+    font-family: 'Lato';
 }
 
 .form-1 {
-    width: 100%;
+   
     height: 100%;
-    border: 1px solid;
     padding: 30px;
-    box-shadow: 10px 10px 5px 0px rgba(246, 240, 240, 0.75);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 10px;
 
 
 }
 
 .filler {
-    /* border: 1px solid; */
+
     height: 40px;
     display: flex;
     justify-content: space-between;
@@ -70,16 +70,15 @@
 
 .rectangle {
     width: 100%;
-    height: 5px;
     border: 1px solid;
-    border-left: none;
-    border-right: none;
-    /* background-color: #555; */
+
 }
 
 #circle2 {
+    background-color: #ffffff;
     border: 1px solid;
-    background-color: #fff;
+    height: 10px;
+    width: 10px;
 }
 
 .text {
@@ -94,14 +93,13 @@
 }
 
 .start-trip h2 {
-    color: #555;
+    font-family:'Lato', sans-serif;
+
 }
 
 .start-trip input {
     margin-top: 20px;
-    width: 200px;
     text-decoration: none;
-    border-color:  #555;
 }
 
 .repeat-on {
@@ -109,28 +107,34 @@
 }
 
 .repeat-on p {
+    font-family:'Lato', sans-serif;
     font-size: 18px;
 }
 
 .start-date h3 {
+    font-family:'Lato', sans-serif;
     font-size: 16px;
     color: blue;
+    margin-bottom: 20px;
 }
 
 .start-date input {
-    height: 40px;
+
     border-radius: 10px;
     border-color:  #555;
+    width: 140px;
 }
 
 .end-date h3 {
+    font-family:'Lato', sans-serif;
     font-size: 16px;
     color: blue;
+    margin-bottom: 20px;
 }
 .end-date input {
-    height: 40px;
     border-radius: 10px;
     border-color:  #555;
+    width: 140px;
 
 }
 
@@ -141,21 +145,103 @@
 }
 
 .no-end-date label {
+    font-family:'Lato', sans-serif;
     font-size: 16px;
-    color: #555;
+ 
+
+
 }
 
 .submit-btn {
-    margin-top: 160px;
+    margin-top: 120px;
   
 }
 
 .submit-btn input {
-    padding: 10px;
+    padding: 20px;
     width: 100%;
     border-radius: 10px;
     color: white;
-    background-color: blue;
-
+    font-family: 'Lato';
+    border: none;
+    background-color: #0080ff;
+    font-weight: bold;
 }
 
+.submit-btn input:hover {
+    background-color: rgb(0, 0, 172);
+    color: white;
+  }
+  
+
+.text p {
+    font-family:'Lato', sans-serif;
+}
+
+input[type=time] {
+    border: 1px solid;
+    color: #2a2c2d;
+    font-size: 14px;
+    font-family: 'Lato';
+    width: 150px;
+    outline: none;
+  }
+
+input[type=time]::-webkit-datetime-edit-fields-wrapper {
+    display: flex;
+  }
+
+input[type=time]::-webkit-datetime-edit-text {
+    padding: 10px 4px;
+  }
+/* Hour */
+input[type=time]::-webkit-datetime-edit-hour-field {
+    background-color: #f2f4f5;
+    border-radius: 15%;
+    padding: 19px 13px;
+  }
+
+/* Minute */
+input[type=time]::-webkit-datetime-edit-minute-field {
+    background-color: #f2f4f5;
+    border-radius: 15%;
+    padding: 19px 13px;
+  }
+  
+  /* AM/PM */
+  input[type=time]::-webkit-datetime-edit-ampm-field {
+    background-color: #7155d3;
+    border-radius: 15%;
+    color: #fff;
+    padding: 10px 5px;
+  }
+  
+  /* 'X' button for resetting/clearing time */
+  input[type=time]::-webkit-clear-button {
+    display: none;
+  }
+  
+  /* Up/Down arrows for incrementing/decrementing the value */
+  input[type=time]::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  input[type="date"]{
+    /* background-color: #0080ff; */
+    padding: 10px;
+    font-family: "Lato",monospace;
+    font-size: 16px;
+/* 
+    outline: none; */
+    border-radius: 5px;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.2);
+}

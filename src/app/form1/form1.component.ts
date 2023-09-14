@@ -171,6 +171,10 @@ if (isEndDateAuto === true) {
     return weekFormGroup;
   }
 
+  naviagteToTime() {
+    this.route.navigate(['/form-2'])
+  }
+
 
 
 }
